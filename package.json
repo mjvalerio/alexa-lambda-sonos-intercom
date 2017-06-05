@@ -1,0 +1,13 @@
+{
+  "name": "Alexa_Sonos_Intercom",
+  "version": "0.1.0",
+  "description": "Alexa skill for broadcasting messages via Sonos.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matt Valerio",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.16.0"
+  }
+}
