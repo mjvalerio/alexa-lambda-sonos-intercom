@@ -24,12 +24,16 @@ module.exports.message = (event, context, callback) => {
   try {
     assert(event.session)
     assert(event.session.application)
-
     assert(event.request)
     assert(event.request.intent)
-
     assert(event.request.intent.name.toLowerCase() === 'message')
-    assert(event.request.intent.slots.item.value)
+
+    //assert(event.request.intent.slots.MessageContent.value);
+    //assert(event.request.intent.slots.room_name.value);
+    assert(process.env.SONOS_API_SERVER);
+    assert(process.env.AUTH_USERNAME);
+    assert(process.env.AUTH_PASSWORD);
+
   } catch (e) {
     callback(null, message(
       "Invalid request",
@@ -49,29 +53,31 @@ module.exports.message = (event, context, callback) => {
       auth: auth
   };
 
-  axios.get(`${SONOS_API_SERVER}/office/say/Happy Birthday!`, options)
+  let slots = event.request.intent.slots;
+  let messageContent = slots.MessageContent.value;
+  let sonosZone = slots.room_name.value;
+  console.log("message - " + messageContent);
+  console.log("sonosZone - " + sonosZone);
+
+  console.log("ready to call sonos api");
+  axios.get(`${SONOS_API_SERVER}/${sonosZone}/say/${messageContent}`, options)
       .then(response => {
           console.log("SUCCESS: broadcasted message.");
-          this.emit(':tell', `Done.`);
-          return;
+          //emit(':tell', `Done.`);
+          callback(null, message(
+            "SUCESS",
+            "Sonos message successful."
+          ))
+          //return;
       })
       .catch(err => {
+          console.log("ERROR sending message")
           console.error(err);
-          this.emit(':tell', "Error occurred broadcasting message");
-          return;
+          callback(null, message(
+            "Error",
+            "Check error logs for more information"
+          ))
+          //emit(':tell', "Error occurred broadcasting message");
+          //return;
       });
-
-  var item = event.request.intent.slots.item.value
-
-  if (item * 1 === 42) {
-    callback(null, message(
-      "42",
-      "42 is the answer to the Ultimate Question of Life, the Universe, and Everything!"
-    ))
-  } else {
-    callback(null, message(
-      "Asked for " + item,
-      "I don't know anything about " + item
-    ))
-  }
 }
