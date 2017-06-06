@@ -11,7 +11,7 @@ This is designed to be run on Lambda.
 The AWS SDK will automatically pull credentials from environment variables, as documented
 here: http://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/loading-node-credentials-environment.html.
 
-The [serverless framework] (https://serverless.com/) is used to deploy this lambda function.  The serverless framework requires the following environment variables.  Look [here](https://serverless.com/framework/docs/providers/aws/guide/credentials/ "Serverless AWS credentials documentation") for more details.
+The [serverless framework](https://serverless.com/) is used to deploy this lambda function.  The serverless framework requires the following environment variables.  Look [here](https://serverless.com/framework/docs/providers/aws/guide/credentials/ "Serverless AWS credentials documentation") for more details.
 
 * AWS_ACCESS_KEY_ID -
 * AWS_SECRET_ACCESS_KEY -
