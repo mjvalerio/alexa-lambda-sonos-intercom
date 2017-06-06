@@ -1,9 +1,12 @@
 Alexa skill that broadcasts messages via a Sonos system.
+  
+# Background
+  I never met the guy, but thanks to David Merrick for sharing.  He is smarter than I.  This lambda function is based off a fork of code his code that I stumbled on to [here](https://www.david-merrick.com/2017/05/17/alexa-sonos-intercom/).  David's is pretty polished, but mine is a work in progress.  After a 6 year hiatus, I am getting back into coding.  Bear with me while I knock the rust off my keyboard.
 
 # Requirements
 
 You must have a [Sonos API server](https://github.com/davidmerrick/rpi-node-sonos-http-api) running at a publicly-accessible endpoint.
-I recommend using resin.io to do this with a Raspberry Pi.
+I recommend using resin.io to do this with a Raspberry Pi.  Good instructions for getting this up and running can be found [here](https://www.david-merrick.com/2017/05/16/setting-up-node-sonos-api/)
 
 # Installation
 
