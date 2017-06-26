@@ -34,6 +34,7 @@ After all of these environment variables are in order do the following:
 
 # Alexa skill
 I Setup my Alexa skill like this...
+
 **Skill Information Stuff**
 - Skill Type: custom
 - Invocation name: Intercom
@@ -73,7 +74,7 @@ I created a custom slot type named SonosZone with the following values;
 
 You will need to change these values to reflect your sonos zone names;
 
--Sample Utterances
+- Sample Utterances
 ```
 MessageIntent {slot value|MessageContent} to {room_name}
 MessageIntent to tell {room_name} {slot value|MessageContent}
