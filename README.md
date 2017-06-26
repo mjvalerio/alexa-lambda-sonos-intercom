@@ -32,5 +32,53 @@ After all of these environment variables are in order do the following:
 * npm install -g serverless
 * sls deploy
 
+# Alexa skill
+I Setup my Alexa skill like this...
+
+Interaction Model
+
+- Intent Schema
+```
+{
+  "intents": [
+    {
+      "slots": [
+        {
+          "name": "room_name",
+          "type": "SonosZone"
+        },
+        {
+          "name": "MessageContent",
+          "type": "AMAZON.LITERAL"
+        }
+      ],
+      "intent": "MessageIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "intent": "AMAZON.CancelIntent"
+    }
+  ]
+}
+```
+- I created a custom slot type of SonosZone with the following values, but you will need to change to reflext your sonos zone names;
+-- Basement, Kitchen, Master Bedroom, Office, Maecy, Henry, All, everyone
+
+Sample Utterances
+```
+MessageIntent {slot value|MessageContent} to {room_name}
+MessageIntent to tell {room_name} {slot value|MessageContent}
+```
+
+Alexa, ask "Intercom" to tell "everyone" "dinner is ready"
+or
+Alexa, ask "Intercom" to tell "office" "dinner is ready"
+or
+Alexa, tell "Intercom" "dinner is ready" to "office"
 # Testing
 Comming soon
