@@ -26,15 +26,14 @@ module.exports.message = (event, context, callback) => {
     assert(event.session.application)
     assert(event.request)
     assert(event.request.intent)
-    assert(event.request.intent.name.toLowerCase() === 'message')
-
-    //assert(event.request.intent.slots.MessageContent.value);
-    //assert(event.request.intent.slots.room_name.value);
+    console.log('intent name:' + event.request.intent.name);
+    assert(event.request.intent.name.toLowerCase() === 'messageintent');
     assert(process.env.SONOS_API_SERVER);
     assert(process.env.AUTH_USERNAME);
     assert(process.env.AUTH_PASSWORD);
 
   } catch (e) {
+    console.log(e);
     callback(null, message(
       "Invalid request",
       "Sorry, but I cannot handle your request"
@@ -63,12 +62,10 @@ module.exports.message = (event, context, callback) => {
   axios.get(`${SONOS_API_SERVER}/${sonosZone}/say/${messageContent}`, options)
       .then(response => {
           console.log("SUCCESS: broadcasted message.");
-          //emit(':tell', `Done.`);
           callback(null, message(
             "SUCESS",
-            "Sonos message successful."
+            'Sonos message, ' + messageContent + ', successfully sent to, ' + sonosZone
           ))
-          //return;
       })
       .catch(err => {
           console.log("ERROR sending message")
@@ -77,7 +74,5 @@ module.exports.message = (event, context, callback) => {
             "Error",
             "Check error logs for more information"
           ))
-          //emit(':tell', "Error occurred broadcasting message");
-          //return;
       });
 }
