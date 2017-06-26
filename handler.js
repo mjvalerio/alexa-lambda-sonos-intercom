@@ -59,7 +59,6 @@ module.exports.message = (event, context, callback) => {
   console.log("sonosZone - " + sonosZone);
 
   console.log("ready to call sonos api");
-  //axios.get(`${SONOS_API_SERVER}/${sonosZone}/pause`);
   if (sonosZone.toLowerCase() == 'everyone' || sonosZone.toLowerCase() == 'all') {
     var sonosURL = `${SONOS_API_SERVER}/sayall/${messageContent}`;
   } else {
@@ -81,5 +80,4 @@ module.exports.message = (event, context, callback) => {
             "Check error logs for more information"
           ))
       });
-  //axios.get(`${SONOS_API_SERVER}/${sonosZone}/play`);
 }
