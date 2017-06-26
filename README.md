@@ -70,9 +70,9 @@ I Setup my Alexa skill like this...
 }
 ```
 I created a custom slot type named SonosZone with the following values;
-- Basement, Kitchen, Master Bedroom, Office, Maecy, Henry, All, everyone
+```Basement, Kitchen, Master Bedroom, Office, Maecy, Henry, All, Everyone```
 
-You will need to change these values to reflect your sonos zone names;
+*You will need to change these values to reflect your sonos zone names*
 
 - Sample Utterances
 ```
