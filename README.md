@@ -70,6 +70,7 @@ Interaction Model Stuff
 ```
 I created a custom slot type named SonosZone with the following values;
 - Basement, Kitchen, Master Bedroom, Office, Maecy, Henry, All, everyone
+
 You will need to change these values to reflect your sonos zone names;
 
 Sample Utterances
